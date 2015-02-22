@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>gymtsu</artifactId>
+        <groupId>gymtsu</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gymtsu-android</artifactId>
+    <packaging>apk</packaging>
+    <name>android app module</name>
+
+    <properties>
+        <platform.version>4.1.1.4</platform.version>
+        <android.plugin.version>3.9.0-rc.2</android.plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${platform.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android.plugin.version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <androidManifestFile>${project.basedir}/src/main/AndroidManifest.xml</androidManifestFile>
+                        <resourceDirectory>${project.basedir}/src/main/res</resourceDirectory>
+                        <sdk>
+                            <platform>16</platform>
+                        </sdk>
+                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>android-deploy</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

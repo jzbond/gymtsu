@@ -1,0 +1,1 @@
+mvn exec:java -Dexec.mainClass="org.hsqldb.Server" -Dexec.args="-database.0 file:target/hsqldb/testData -dbname.0 xdb"
